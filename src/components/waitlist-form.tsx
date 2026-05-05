@@ -36,7 +36,7 @@ export default function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-3xl border border-emerald-900/10 bg-white/80 p-3 shadow-xl shadow-emerald-950/10 backdrop-blur sm:flex sm:items-center sm:gap-3">
+    <form onSubmit={onSubmit} className="relative mx-auto rounded-xl border border-black/[0.08] bg-white p-2 shadow-[0_18px_60px_rgba(0,0,0,0.08)] sm:flex sm:items-center sm:gap-2">
       <label className="sr-only" htmlFor="email">
         Work email
       </label>
@@ -49,17 +49,17 @@ export default function WaitlistForm() {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         placeholder="you@company.com"
-        className="h-14 w-full rounded-2xl border border-transparent bg-white px-5 text-base font-semibold text-slate-950 outline-none ring-emerald-500/20 transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-4 sm:flex-1"
+        className="h-14 w-full rounded-lg border border-transparent bg-white px-4 text-base text-black outline-none transition placeholder:text-neutral-400 focus:border-neutral-200 sm:flex-1"
       />
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-3 h-14 w-full rounded-2xl bg-emerald-500 px-6 text-base font-black text-emerald-950 shadow-lg shadow-emerald-700/20 transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-70 sm:mt-0 sm:w-auto"
+        className="mt-2 h-12 w-full rounded-lg bg-black px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-70 sm:mt-0 sm:w-auto"
       >
-        {status === "loading" ? "Joining…" : "Get early access"}
+        {status === "loading" ? "Joining…" : "Try Froggy"}
       </button>
       {message ? (
-        <p className={`px-2 pt-3 text-sm font-semibold sm:absolute sm:translate-y-14 ${status === "success" ? "text-emerald-800" : "text-red-700"}`}>
+        <p className={`px-2 pt-3 text-sm font-medium sm:absolute sm:left-2 sm:top-full ${status === "success" ? "text-[#17663a]" : "text-red-700"}`}>
           {message}
         </p>
       ) : null}
