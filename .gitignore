@@ -30,9 +30,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files
+# env files and local Supabase secrets
 .env*
 !.env.example
+.supabase*
 
 # vercel
 .vercel
