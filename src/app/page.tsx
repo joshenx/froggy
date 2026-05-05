@@ -1,6 +1,12 @@
+import EvaluationExplorer from "@/components/evaluation-explorer";
 import WaitlistForm from "@/components/waitlist-form";
 
-const navItems = ["Product", "Question banks", "Evaluation axes", "Pricing"];
+const navItems = [
+  { label: "Product", href: "#product" },
+  { label: "Question banks", href: "#question-banks" },
+  { label: "Evaluation axes", href: "#evaluation-axes" },
+  { label: "Pricing", href: "#pricing" },
+];
 
 const features = [
   {
@@ -31,12 +37,6 @@ const tiles = [
   "Execution",
 ];
 
-const bars = [
-  { label: "Question coverage", froggy: 86, docs: 42, adHoc: 33 },
-  { label: "Interviewer alignment", froggy: 78, docs: 45, adHoc: 29 },
-  { label: "Signal quality", froggy: 84, docs: 52, adHoc: 38 },
-];
-
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#fbfbf8] text-[#10130f]">
@@ -48,8 +48,8 @@ export default function Home() {
           </a>
           <nav className="hidden items-center gap-8 text-sm text-neutral-600 md:flex">
             {navItems.map((item) => (
-              <a key={item} href="#waitlist" className="transition hover:text-black">
-                {item}
+              <a key={item.href} href={item.href} className="transition hover:text-black">
+                {item.label}
               </a>
             ))}
           </nav>
@@ -91,40 +91,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-black/[0.06] bg-white px-5 py-20 sm:px-8 lg:px-10">
+      <section id="evaluation-axes" className="scroll-mt-24 border-y border-black/[0.06] bg-white px-5 py-20 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <div className="grid overflow-hidden rounded-[2rem] border border-black/[0.06] bg-[#fbfbf8] lg:grid-cols-[0.42fr_0.58fr]">
-            <div className="bg-[#10130f] p-8 text-white sm:p-12 lg:p-16">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-neutral-400">Interview quality</p>
-              <h2 className="mt-5 max-w-sm text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">
-                Higher signal across every hiring loop
-              </h2>
-              <p className="mt-5 max-w-sm leading-7 text-neutral-400">
-                Replace scattered docs and improvised interviews with question design your whole team can inspect, reuse, and improve.
-              </p>
-              <div className="mt-12 space-y-7 text-sm">
-                <MetricItem active label="Coverage" text="Know which competencies your loop actually evaluates." />
-                <MetricItem label="Consistency" text="Give interviewers shared prompts and rubrics." />
-                <MetricItem label="Iteration" text="Keep improving your bank as you learn what predicts success." />
-              </div>
-            </div>
-            <div className="bg-[#fbfbf8] p-6 sm:p-10 lg:p-14">
-              <div className="mb-8 flex items-center justify-end gap-5 text-xs font-semibold text-neutral-500">
-                <span className="flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-[#12a150]" /> Froggy</span>
-                <span className="flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-[#d9d6cf]" /> Shared docs</span>
-                <span className="flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-[#efeae3]" /> Ad hoc</span>
-              </div>
-              <div className="space-y-10">
-                {bars.map((bar) => (
-                  <BenchmarkRow key={bar.label} {...bar} />
-                ))}
-              </div>
-            </div>
-          </div>
+          <EvaluationExplorer />
         </div>
       </section>
 
-      <section className="px-5 py-24 sm:px-8 lg:px-10">
+      <section id="product" className="scroll-mt-24 px-5 py-24 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#17663a]">Product</p>
@@ -134,7 +107,7 @@ export default function Home() {
           </div>
           <div className="mt-14 grid gap-4 md:grid-cols-3">
             {features.map((feature) => (
-              <article key={feature.title} className="rounded-3xl border border-black/[0.06] bg-white p-7 shadow-[0_24px_80px_rgba(16,19,15,0.06)]">
+              <article id={feature.title === "Collaborative banks" ? "question-banks" : undefined} key={feature.title} className="scroll-mt-24 rounded-3xl border border-black/[0.06] bg-white p-7 shadow-[0_24px_80px_rgba(16,19,15,0.06)]">
                 <div className="mb-8 h-28 rounded-2xl border border-black/[0.05] bg-[linear-gradient(135deg,#f6fff8,#e9fff0)] p-3">
                   <div className="grid h-full place-items-center rounded-xl bg-white/70 text-3xl">✦</div>
                 </div>
@@ -142,6 +115,23 @@ export default function Home() {
                 <p className="mt-3 leading-7 text-neutral-600">{feature.description}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="scroll-mt-24 border-t border-black/[0.06] bg-white px-5 py-20 sm:px-8 lg:px-10">
+        <div className="mx-auto grid max-w-7xl gap-8 rounded-[2rem] border border-black/[0.06] bg-[#10130f] p-8 text-white sm:p-12 lg:grid-cols-[0.85fr_1.15fr] lg:p-14">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#5fe08a]">Pricing</p>
+            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em]">Early teams get founder pricing.</h2>
+          </div>
+          <div className="max-w-2xl text-neutral-300">
+            <p className="text-lg leading-8">
+              Froggy is opening with a small design-partner cohort. Join the waitlist and we’ll invite early teams to shape the product before public pricing launches.
+            </p>
+            <a href="#waitlist" className="mt-7 inline-flex rounded-lg bg-[#5fe08a] px-5 py-3 text-sm font-semibold text-[#10130f] transition hover:bg-[#8af0a8]">
+              Join early access
+            </a>
           </div>
         </div>
       </section>
@@ -173,37 +163,3 @@ function FloatingTiles({ side }: { side: "left" | "right" }) {
   );
 }
 
-function MetricItem({ label, text, active = false }: { label: string; text: string; active?: boolean }) {
-  return (
-    <div className={`${active ? "border-l-2 border-white pl-5" : "pl-5 text-neutral-500"}`}>
-      <p className="font-semibold text-white">{label}</p>
-      <p className="mt-2 max-w-xs leading-6">{text}</p>
-    </div>
-  );
-}
-
-function BenchmarkRow({ label, froggy, docs, adHoc }: { label: string; froggy: number; docs: number; adHoc: number }) {
-  const items = [
-    { name: "Froggy", value: froggy, className: "bg-[#12a150] text-white shadow-[0_10px_30px_rgba(18,161,80,0.25)]" },
-    { name: "Docs", value: docs, className: "bg-[#d9d6cf] text-neutral-900" },
-    { name: "Ad hoc", value: adHoc, className: "bg-[#efeae3] text-neutral-900" },
-  ];
-
-  return (
-    <div>
-      <div className="mb-3 flex items-center justify-between text-sm">
-        <span className="font-medium text-neutral-700">{label}</span>
-        <span className="text-neutral-400">Signal score</span>
-      </div>
-      <div className="flex h-48 items-end gap-3 border-b border-l border-neutral-200 pl-5">
-        {items.map((item) => (
-          <div key={item.name} className="flex flex-1 flex-col items-center gap-2">
-            <span className="text-sm font-semibold">{item.value}%</span>
-            <div className={`w-full max-w-16 ${item.className}`} style={{ height: `${item.value * 1.75}px` }} />
-            <span className="text-xs text-neutral-500">{item.name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
