@@ -110,7 +110,7 @@ export default function Home() {
             </div>
             <div className="bg-[#fbfbf8] p-6 sm:p-10 lg:p-14">
               <div className="mb-8 flex items-center justify-end gap-5 text-xs font-semibold text-neutral-500">
-                <span className="flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-[#084ee8]" /> Froggy</span>
+                <span className="flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-[#12a150]" /> Froggy</span>
                 <span className="flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-[#d9d6cf]" /> Shared docs</span>
                 <span className="flex items-center gap-2"><span className="h-3 w-3 rounded-sm bg-[#efeae3]" /> Ad hoc</span>
               </div>
@@ -135,7 +135,7 @@ export default function Home() {
           <div className="mt-14 grid gap-4 md:grid-cols-3">
             {features.map((feature) => (
               <article key={feature.title} className="rounded-3xl border border-black/[0.06] bg-white p-7 shadow-[0_24px_80px_rgba(16,19,15,0.06)]">
-                <div className="mb-8 h-28 rounded-2xl border border-black/[0.05] bg-[linear-gradient(135deg,#f6fff8,#eef2ff)] p-3">
+                <div className="mb-8 h-28 rounded-2xl border border-black/[0.05] bg-[linear-gradient(135deg,#f6fff8,#e9fff0)] p-3">
                   <div className="grid h-full place-items-center rounded-xl bg-white/70 text-3xl">✦</div>
                 </div>
                 <h3 className="text-xl font-semibold tracking-tight">{feature.title}</h3>
@@ -156,14 +156,14 @@ function FloatingTiles({ side }: { side: "left" | "right" }) {
       : ["top-28 -right-4", "top-48 right-14", "top-72 -right-2", "bottom-44 right-20", "bottom-28 -right-6"];
 
   return (
-    <div className="pointer-events-none absolute inset-y-0 hidden w-64 opacity-80 sm:block" aria-hidden="true">
+    <div className="pointer-events-none absolute inset-y-0 hidden w-64 opacity-70 sm:block" aria-hidden="true">
       {positions.map((position, index) => (
         <div
           key={`${side}-${position}`}
-          className={`absolute ${position} h-14 w-14 rounded-sm border border-[#9fc9ff]/40 shadow-sm ${
+          className={`absolute ${position} h-14 w-14 rounded-sm border border-[#9be6b3]/60 shadow-sm ${
             index % 2 === 0
-              ? "bg-[linear-gradient(135deg,#dff5ff,#73a7ff)]"
-              : "bg-[linear-gradient(135deg,#efffea,#b8f3cb)]"
+              ? "bg-[linear-gradient(135deg,#eaffef,#5fe08a)]"
+              : "bg-[linear-gradient(135deg,#f6fff8,#baf7c9)]"
           }`}
         >
           <div className="h-full w-full bg-[linear-gradient(45deg,transparent_48%,rgba(255,255,255,0.55)_50%,transparent_52%)]" />
@@ -184,7 +184,7 @@ function MetricItem({ label, text, active = false }: { label: string; text: stri
 
 function BenchmarkRow({ label, froggy, docs, adHoc }: { label: string; froggy: number; docs: number; adHoc: number }) {
   const items = [
-    { name: "Froggy", value: froggy, className: "bg-[#084ee8] text-white" },
+    { name: "Froggy", value: froggy, className: "bg-[#12a150] text-white shadow-[0_10px_30px_rgba(18,161,80,0.25)]" },
     { name: "Docs", value: docs, className: "bg-[#d9d6cf] text-neutral-900" },
     { name: "Ad hoc", value: adHoc, className: "bg-[#efeae3] text-neutral-900" },
   ];
