@@ -36,7 +36,15 @@ export default function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="relative mx-auto rounded-xl border border-black/[0.08] bg-white p-2 shadow-[0_18px_60px_rgba(0,0,0,0.08)] sm:flex sm:items-center sm:gap-2">
+    <form
+      onSubmit={onSubmit}
+      className="relative mx-auto rounded-xl border p-2 sm:flex sm:items-center sm:gap-2"
+      style={{
+        borderColor: "var(--line)",
+        background: "var(--paper)",
+        boxShadow: "0 18px 60px rgba(45,95,63,0.10)",
+      }}
+    >
       <label className="sr-only" htmlFor="email">
         Work email
       </label>
@@ -49,17 +57,26 @@ export default function WaitlistForm() {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         placeholder="you@company.com"
-        className="h-14 w-full rounded-lg border border-transparent bg-white px-4 text-base text-black outline-none transition placeholder:text-neutral-400 focus:border-neutral-200 sm:flex-1"
+        className="h-14 w-full rounded-lg border border-transparent px-4 text-base outline-none transition placeholder:text-neutral-400 focus:border-neutral-200 sm:flex-1"
+        style={{ background: "var(--paper)", color: "var(--ink)" }}
       />
       <button
         type="submit"
         disabled={status === "loading"}
-        className="mt-2 h-12 w-full rounded-lg bg-black px-5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-70 sm:mt-0 sm:w-auto"
+        className="mt-2 h-12 w-full rounded-lg px-5 text-sm font-semibold transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70 sm:mt-0 sm:w-auto"
+        style={{
+          background: "var(--moss)",
+          color: "var(--paper)",
+          boxShadow: "inset 0 -2px 0 rgba(0,0,0,0.18)",
+        }}
       >
-        {status === "loading" ? "Joining…" : "Try Froggy"}
+        {status === "loading" ? "Joining…" : "Get early access"}
       </button>
       {message ? (
-        <p className={`px-2 pt-3 text-sm font-medium sm:absolute sm:left-2 sm:top-full ${status === "success" ? "text-[#17663a]" : "text-red-700"}`}>
+        <p
+          className="px-2 pt-3 text-sm font-medium sm:absolute sm:left-2 sm:top-full"
+          style={{ color: status === "success" ? "var(--moss)" : "#b91c1c" }}
+        >
           {message}
         </p>
       ) : null}

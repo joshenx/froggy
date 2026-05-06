@@ -1,15 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbfbf8;
-  --foreground: #10130f;
+  --cream: #F4F1E8;
+  --cream-2: #EDE8D8;
+  --paper: #FBF8EF;
+  --moss: #2D5F3F;
+  --moss-deep: #1F4A2F;
+  --leaf: #7FB069;
+  --leaf-soft: #A8C99A;
+  --terra: #E8985E;
+  --terra-soft: #F0B789;
+  --ink: #1A2B22;
+  --ink-soft: #3A4B42;
+  --muted: #6B7A72;
+  --line: #D9D2BF;
+  --line-soft: #E5DFCC;
+  --pond: #DCE7D5;
+  --water: #C5D8C0;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
 * {
@@ -22,12 +36,27 @@ html {
 
 body {
   margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
 }
 
 ::selection {
-  background: #c8f7d3;
-  color: #10130f;
+  background: var(--leaf-soft);
+  color: var(--ink);
+}
+
+/* ── Pattern overlays (static defaults for feature card + CTA band) ── */
+
+.ov-lilies {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><g fill='none' stroke='white' stroke-opacity='.18' stroke-width='1.5'><path d='M30,30 a22,22 0 1 1 -20,22 L30,52 Z'/><path d='M120,90 a26,26 0 1 1 -24,26 L120,116 Z'/><path d='M70,120 a18,18 0 1 1 -16,18 L70,138 Z'/></g></svg>");
+  background-size: 200px 200px;
+}
+
+.ov-ripples {
+  background:
+    radial-gradient(circle at 90% 100%, transparent 60px, rgba(255,255,255,0.10) 60px 62px, transparent 62px 100px, rgba(255,255,255,0.08) 100px 102px, transparent 102px 150px, rgba(255,255,255,0.06) 150px 152px, transparent 152px),
+    radial-gradient(circle at 10% 0%, transparent 40px, rgba(255,255,255,0.08) 40px 42px, transparent 42px 80px, rgba(255,255,255,0.06) 80px 82px, transparent 82px);
 }
