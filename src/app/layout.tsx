@@ -1,25 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Froggy — Interview questions for your ideal candidate",
+  title: "Froggy — Build interviews that find your ideal candidate",
   description:
-    "Froggy helps teams collaborate on interview question banks, tag evaluation axes, and design interviews that reveal ideal candidates.",
+    "Froggy gives hiring teams a shared place to create question banks, tag evaluation axes, and design interview loops with clearer hiring signal.",
   openGraph: {
     title: "Froggy",
     description:
-      "Collaborative interview question banks and evaluation tagging for teams that know who they want to hire.",
+      "Build interviews that find your ideal candidate. Collaborative question banks and calibrated evaluation axes for hiring teams.",
     type: "website",
   },
 };
@@ -32,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${bricolage.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
