@@ -30,6 +30,7 @@ export default async function RolesPage() {
             {overview.roleSummaries.map(({ role, flow, stageCount, questionCount, mappedJobs, activeCandidates }) => (
               <div
                 key={role.id}
+                data-testid={`role-card-${role.id}`}
                 className="rounded-3xl border p-5"
                 style={{ borderColor: "var(--line)", background: "var(--paper)" }}
               >

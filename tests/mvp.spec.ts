@@ -96,7 +96,7 @@ test("hiring manager can build a role flow, create a bank question, and use the 
   await expect(page.getByText(/Loop published and ready for ATS mappings\./i)).toBeVisible();
 
   await page.goto("/roles");
-  const platformCard = page.locator("div").filter({ hasText: /Platform Engineer/i }).first();
+  const platformCard = page.getByTestId(/role-card-/).filter({ hasText: /Platform Engineer/i }).first();
   await expect(platformCard.getByText(/^active$/i)).toBeVisible();
 });
 
