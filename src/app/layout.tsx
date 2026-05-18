@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Providers from "./providers";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-display",
@@ -21,13 +22,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Froggy — Build interviews that find your ideal candidate",
+  title: "Froggy — Clear, calibrated hiring signal for engineering interview loops",
   description:
-    "Froggy gives hiring teams a shared place to create question banks, tag evaluation axes, and design interview loops with clearer hiring signal.",
+    "Structured question banks, reusable rubrics, and coverage analysis for engineering hiring teams that want faster, more consistent decisions.",
   openGraph: {
-    title: "Froggy",
+    title: "Froggy — Clear, calibrated hiring signal for engineering interview loops",
     description:
-      "Build interviews that find your ideal candidate. Collaborative question banks and calibrated evaluation axes for hiring teams.",
+      "Structured question banks, reusable rubrics, and coverage analysis for engineering hiring teams.",
     type: "website",
   },
 };
@@ -40,9 +41,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${bricolage.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

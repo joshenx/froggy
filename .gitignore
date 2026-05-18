@@ -25,6 +25,7 @@
 # misc
 .DS_Store
 *.pem
+data/mvp-store.json
 
 # debug
 npm-debug.log*
